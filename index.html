@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind + DaisyUI</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-[#1e2632] font-sans h-screen overflow-hidden text-slate-800">
+
+    <div class="flex flex-col md:flex-row h-full w-full">
+
+        <aside class="hidden md:flex w-24  flex-col items-center py-6 gap-8 text-slate-400 shrink-0">
+            <div class="avatar">
+                <div class="w-12 rounded-full ring ring-primary ring-offset-2 ring-offset-[#1e2632]">
+                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
+            </div>
+
+            <nav class="flex flex-col gap-2 w-full px-2">
+                <button
+                    class="btn btn-ghost flex flex-col items-center h-20 bg-blue-600 text-white hover:bg-blue-700 border-none transition-all">
+                    <i data-lucide="home" class="w-6 h-6"></i>
+                    <span class="text-[10px] font-medium mt-1">Home</span>
+                </button>
+
+                <button
+                    class="btn btn-ghost flex flex-col items-center h-20 hover:bg-slate-700 hover:text-white border-none">
+                    <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                    <span class="text-[10px] mt-1">Dash</span>
+                </button>
+
+                <button
+                    class="btn btn-ghost flex flex-col items-center h-20 hover:bg-slate-700 hover:text-white border-none">
+                    <i data-lucide="wallet" class="w-6 h-6"></i>
+                    <span class="text-[10px] mt-1">Cash</span>
+                </button>
+            </nav>
+
+            <div class="mt-auto flex flex-col gap-4">
+                <button class="btn btn-ghost btn-circle hover:bg-slate-700 hover:text-white border-none">
+                    <i data-lucide="settings" class="w-5 h-5"></i>
+                </button>
+                <button class="btn btn-ghost btn-circle text-red-400 hover:bg-red-900/30 border-none">
+                    <i data-lucide="power" class="w-5 h-5"></i>
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+        <header
+            class="md:hidden w-full bg-[#1e2632] text-white px-3 py-2 flex justify-between items-center overflow-x-hidden">
+
+            <div class="dropdown">
+                <div tabindex="0" role="button"
+                    class="flex items-center gap-2 cursor-pointer p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                    <span class="font-bold text-sm uppercase">POS System</span>
+                </div>
+
+                <ul tabindex="0"
+                    class="dropdown-content menu bg-white text-slate-800 rounded-2xl z-[60] w-40 p-3 mt-3 shadow-2xl border border-slate-100">
+                    <li><a class="font-bold text-blue-600"><i data-lucide="home" class="w-4 h-4"></i> Home</a></li>
+                    <li><a><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard</a></li>
+                    <li><a><i data-lucide="arrow-left-right" class="w-4 h-4"></i> Transactions</a></li>
+                    <li><a><i data-lucide="layout-grid" class="w-4 h-4"></i> Tables</a></li>
+                    <div class="divider my-1"></div>
+                    <li><a class="text-red-500 hover:bg-red-50"><i data-lucide="power" class="w-4 h-4"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="avatar w-9 border-2 border-slate-600 rounded-full">
+                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User" />
+            </div>
+
+        </header>
+
+        <main class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-white md:mt-4 md:mb-4 md:mr-4  lg:flex-row  
+         md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner">
+
+            <!-- Choose Category -->
+            <section class="flex-1 p-4  overflow-y-auto scrollbar-hide">
+                <div class="max-w-5xl mx-auto">
+
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                        <h1 class="text-2xl font-bold text-slate-800">Choose Category</h1>
+
+                        <div class="relative w-full md:w-72">
+                            <span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </span>
+                            <input type="text" placeholder="Search in Menu..."
+                                class="input input-bordered w-full pl-10 bg-slate-50 border-slate-200 focus:border-blue-500 rounded-xl" />
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+                        <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                            <div
+                                class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center bg-white shadow-md">
+                                <i data-lucide="layout-grid" class="w-6 h-6 text-blue-500"></i>
+                            </div>
+                            <span class="text-xs font-bold text-blue-600">All</span>
+                        </div>
+
+                        <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                            <div
+                                class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm group-hover:shadow-md transition-all">
+                                <img src="https://cdn-icons-png.flaticon.com/512/706/706164.png"
+                                    class="w-10 h-10 object-contain" alt="Food">
+                            </div>
+                            <span class="text-xs font-semibold text-slate-500 group-hover:text-slate-800">Food</span>
+                        </div>
+
+                        <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                            <div
+                                class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3126/3126581.png"
+                                    class="w-10 h-10 object-contain" alt="Drink">
+                            </div>
+                            <span class="text-xs font-semibold text-slate-500">Drink</span>
+                        </div>
+
+                    </div>
+
+                    <div class="flex justify-between items-center ">
+                        <h2 class="text-lg font-bold">Food <span class="text-slate-400 font-normal text-sm">(44
+                                items)</span></h2>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 ">
+
+                        <!-- Card 1 -->
+                        <div
+                            class=" bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg"
+                                alt="Zinger Box" class="rounded-2xl h-32 w-full object-cover" />
+                            <h3 class="font-bold text-sm text-slate-700">Mighty Zinger Box</h3>
+                            <p class="text-blue-600 font-bold">$ 9.39</p>
+                        </div>
+
+
+                        <!-- Card 2 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/crispy-fried-chicken-plate_144627-27359.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Crispy Strips Meal</h3>
+                            <p class="text-blue-600 font-bold">$ 3.45</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/french-fries-tasty-isolated-white-background_181624-34505.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Large Fries</h3>
+                            <p class="text-blue-600 font-bold">$ 2.00</p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/crispy-fried-chicken-plate_144627-27359.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Crispy Strips Meal</h3>
+                            <p class="text-blue-600 font-bold">$ 3.45</p>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Zinger Box</h3>
+                            <p class="text-blue-600 font-bold">$ 9.39</p>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/french-fries-tasty-isolated-white-background_181624-34505.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Large Fries</h3>
+                            <p class="text-blue-600 font-bold">$ 2.00</p>
+                        </div>
+
+                        <!-- Card 7 -->
+
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/double-hamburger-isolated-white-background-fresh-cheeseburger-fast-food-with-beef-cheese_90220-1192.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Double Beef Burger</h3>
+                            <p class="text-blue-600 font-bold">$ 11.20</p>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/glass-cola-with-ice-cubes_144627-14300.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Large Coke</h3>
+                            <p class="text-blue-600 font-bold">$ 1.50</p>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/fried-chicken-wings-with-sweet-chili-sauce_2829-20161.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Spicy Wings (6pcs)</h3>
+                            <p class="text-blue-600 font-bold">$ 4.99</p>
+                        </div>
+
+                        <!-- Card 10 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/vanilla-ice-cream-cone_144627-30043.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Vanilla Cone</h3>
+                            <p class="text-blue-600 font-bold">$ 1.25</p>
+                        </div>
+
+                        <!-- Card 11 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/deep-fried-chicken-popcorn_1339-6821.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Popcorn Chicken</h3>
+                            <p class="text-blue-600 font-bold">$ 3.95</p>
+                        </div>
+
+                        <!-- Card 12 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/orange-juice-glass_144627-17551.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Fresh Orange Juice</h3>
+                            <p class="text-blue-600 font-bold">$ 2.50</p>
+                        </div>
+                        <!-- Card 13 -->
+                        <div
+                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
+                            <img src="https://img.freepik.com/free-photo/tortilla-wrap-with-falafel-fresh-vegetables_2829-20037.jpg"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Veggie Wrap</h3>
+                            <p class="text-blue-600 font-bold">$ 6.80</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order List -->
+            <section class="w-full hidden lg:block lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
+                <div class="p-6 flex flex-col h-full">
+
+                    <div class="flex justify-between items-center mb-1">
+                        <h2 class="text-xl font-bold text-slate-800">Order List</h2>
+                        <div class="flex gap-1">
+                            <button class="btn btn-ghost btn-xs text-slate-400"><i data-lucide="percent"
+                                    class="w-4 h-4"></i></button>
+                            <button class="btn btn-ghost btn-xs text-red-400"><i data-lucide="trash-2"
+                                    class="w-4 h-4"></i></button>
+                            <button class="btn btn-ghost btn-xs text-slate-400"><i data-lucide="more-vertical"
+                                    class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mb-4 uppercase font-bold tracking-widest">Transaction #00389
+                    </p>
+
+                    <div class="flex gap-2 mb-6 bg-white p-1 rounded-2xl shadow-sm">
+                        <button
+                            class="btn btn-sm flex-1 rounded-xl bg-blue-500 text-white border-none hover:bg-blue-600">Eat
+                            In</button>
+                        <button
+                            class="btn btn-sm flex-1 rounded-xl bg-transparent text-slate-400 border-none hover:bg-slate-50">Delivery</button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto scrollbar-hide space-y-3 mb-6 pr-2">
+
+                        <div class="bg-[#1e2632] text-white rounded-[1.5rem] p-4 shadow-lg relative overflow-hidden">
+                            <div class="flex items-center gap-3">
+                                <img src="https://img.freepik.com/free-photo/crispy-fried-chicken-plate_144627-27359.jpg"
+                                    class="w-12 h-12 rounded-xl object-cover" />
+                                <div class="flex-1">
+                                    <h4 class="text-[10px] font-bold uppercase tracking-wider opacity-80">Crispy Strips
+                                        Meal</h4>
+                                    <p class="text-sm font-black">14.99$</p>
+                                </div>
+                                <div class="flex flex-col items-center bg-slate-700/50 rounded-lg px-1">
+                                    <button class="text-white hover:text-blue-400"><i data-lucide="chevron-up"
+                                            class="w-4 h-4"></i></button>
+                                    <span class="text-[10px] font-bold py-0.5">2</span>
+                                    <button class="text-white hover:text-blue-400"><i data-lucide="chevron-down"
+                                            class="w-4 h-4"></i></button>
+                                </div>
+                            </div>
+                            <div class="flex justify-between mt-4 pt-3 border-t border-slate-700">
+                                <button
+                                    class="text-[9px] font-bold uppercase tracking-tighter opacity-60 hover:opacity-100">Add
+                                    Note</button>
+                                <button
+                                    class="text-[9px] font-bold uppercase tracking-tighter opacity-60 hover:opacity-100">Discount</button>
+                                <button
+                                    class="text-[9px] font-bold uppercase tracking-tighter text-red-400 hover:text-red-300">Remove</button>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white rounded-[1.5rem] p-4 shadow-sm border border-slate-100 flex items-center gap-3">
+                            <img src="https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg"
+                                class="w-12 h-12 rounded-xl object-cover" />
+                            <div class="flex-1">
+                                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Light Strips
+                                    Box</h4>
+                                <p class="text-sm font-black text-slate-800">5.90$</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300">
+                                <button class="hover:text-slate-600"><i data-lucide="minus-circle"
+                                        class="w-4 h-4"></i></button>
+                                <span class="text-xs font-bold text-slate-800">1</span>
+                                <button class="hover:text-slate-600"><i data-lucide="plus-circle"
+                                        class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="space-y-2 mb-6 pt-4 border-t border-dashed border-slate-200">
+                        <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase">
+                            <span>Sub Total</span>
+                            <span class="text-slate-800">$37.30</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase">
+                            <span>Tax</span>
+                            <span class="text-slate-800">$4.00</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="text-sm font-black text-slate-800 uppercase">Total</span>
+                            <span class="text-lg font-black text-blue-600">$41.30</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2 mb-6">
+                        <button
+                            class="flex flex-col items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
+                            <i data-lucide="banknote" class="w-4 h-4 text-green-500 mb-1"></i>
+                            <span class="text-[8px] font-bold text-slate-400 uppercase">Cash</span>
+                        </button>
+                        <button
+                            class="flex flex-col items-center justify-center p-2 bg-blue-50 border border-blue-200 rounded-xl">
+                            <i data-lucide="credit-card" class="w-4 h-4 text-blue-500 mb-1"></i>
+                            <span class="text-[8px] font-bold text-blue-600 uppercase">Card</span>
+                        </button>
+                        <button
+                            class="flex flex-col items-center justify-center p-2 bg-white rounded-xl border border-slate-100">
+                            <i data-lucide="gift" class="w-4 h-4 text-orange-400 mb-1"></i>
+                            <span class="text-[8px] font-bold text-slate-400 uppercase">Gift</span>
+                        </button>
+                        <button
+                            class="flex flex-col items-center justify-center p-2 bg-white rounded-xl border border-slate-100">
+                            <i data-lucide="layout-grid" class="w-4 h-4 text-blue-400 mb-1"></i>
+                            <span class="text-[8px] font-bold text-slate-400 uppercase">Other</span>
+                        </button>
+                    </div>
+
+                    <div class="flex ">
+                        <button class="btn btn-ghost bg-slate-200 rounded-sm px-4"><i data-lucide="printer"
+                                class="w-5 h-5"></i></button>
+                        <button
+                            class="btn btn-primary flex-1 rounded-sm   bg-blue-500 border-none text-white font-black text-lg shadow-xl shadow-blue-100 hover:bg-blue-600">
+                            Pay $41.30
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
