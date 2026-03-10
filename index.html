@@ -112,6 +112,7 @@
 
             <!-- Choose Category -->
             <section class="flex-1 p-4  overflow-y-auto scrollbar-hide">
+                <!-- Menu Items -->
                 <div class="max-w-5xl mx-auto">
 
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
@@ -126,161 +127,200 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-                        <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                            <div
-                                class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center bg-white shadow-md">
-                                <i data-lucide="layout-grid" class="w-6 h-6 text-blue-500"></i>
-                            </div>
-                            <span class="text-xs font-bold text-blue-600">All</span>
-                        </div>
+                    <!-- Category Buttons -->
+                    <div class="w-full overflow-hidden">
+                        <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide w-full flex-nowrap">
 
-                        <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                            <div
-                                class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm group-hover:shadow-md transition-all">
-                                <img src="https://cdn-icons-png.flaticon.com/512/706/706164.png"
-                                    class="w-10 h-10 object-contain" alt="Food">
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center bg-white shadow-md">
+                                    <i data-lucide="layout-grid" class="w-6 h-6 text-blue-500"></i>
+                                </div>
+                                <span class="text-xs font-bold text-blue-600">All</span>
                             </div>
-                            <span class="text-xs font-semibold text-slate-500 group-hover:text-slate-800">Food</span>
-                        </div>
 
-                        <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                            <div
-                                class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3126/3126581.png"
-                                    class="w-10 h-10 object-contain" alt="Drink">
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="smile" class="w-8 h-8 text-pink-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Facial</span>
                             </div>
-                            <span class="text-xs font-semibold text-slate-500">Drink</span>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="hand-heart" class="w-8 h-8 text-purple-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Massage</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="scissors" class="w-8 h-8 text-slate-600"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Hair</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="sparkles" class="w-8 h-8 text-rose-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Nails</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="brush" class="w-8 h-8 text-orange-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Makeup</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="droplet" class="w-8 h-8 text-amber-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Waxing</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="gem" class="w-8 h-8 text-teal-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Bridal</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="footprints" class="w-8 h-8 text-emerald-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Pedicure</span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                <div
+                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                    <i data-lucide="waves" class="w-8 h-8 text-cyan-400"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500">Spa Therapy</span>
+                            </div>
+
                         </div>
 
                     </div>
 
                     <div class="flex justify-between items-center ">
-                        <h2 class="text-lg font-bold">Food <span class="text-slate-400 font-normal text-sm">(44
+                        <h2 class="text-lg font-bold">Items <span class="text-slate-400 font-normal text-sm">(44
                                 items)</span></h2>
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 ">
+                    <!-- Card Section -->
+                    <div
+                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-4 gap-2 mt-4">
 
-                        <!-- Card 1 -->
                         <div
-                            class=" bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg"
-                                alt="Zinger Box" class="rounded-2xl h-32 w-full object-cover" />
-                            <h3 class="font-bold text-sm text-slate-700">Mighty Zinger Box</h3>
-                            <p class="text-blue-600 font-bold">$ 9.39</p>
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/gold-facial-cost-procedure-how-to-do.webp" alt="Facial"
+                                class="rounded-2xl h-32 w-full object-cover mb-2" />
+                            <h3 class="font-bold text-sm text-slate-700">Gold Facial</h3>
+                            <p class="text-blue-600 font-bold">$ 45.00</p>
                         </div>
 
-
-                        <!-- Card 2 -->
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/crispy-fried-chicken-plate_144627-27359.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/sweedish.jpg" alt="Massage"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Crispy Strips Meal</h3>
-                            <p class="text-blue-600 font-bold">$ 3.45</p>
+                            <h3 class="font-bold text-sm text-slate-700">Swedish Massage</h3>
+                            <p class="text-blue-600 font-bold">$ 60.00</p>
                         </div>
-
-                        <!-- Card 3 -->
-                        <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/french-fries-tasty-isolated-white-background_181624-34505.jpg"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Large Fries</h3>
-                            <p class="text-blue-600 font-bold">$ 2.00</p>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/crispy-fried-chicken-plate_144627-27359.jpg"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Crispy Strips Meal</h3>
-                            <p class="text-blue-600 font-bold">$ 3.45</p>
-                        </div>
-
-                        <!-- Card 5 -->
-                        <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Zinger Box</h3>
-                            <p class="text-blue-600 font-bold">$ 9.39</p>
-                        </div>
-
-                        <!-- Card 6 -->
-                        <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/french-fries-tasty-isolated-white-background_181624-34505.jpg"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Large Fries</h3>
-                            <p class="text-blue-600 font-bold">$ 2.00</p>
-                        </div>
-
-                        <!-- Card 7 -->
 
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/double-hamburger-isolated-white-background-fresh-cheeseburger-fast-food-with-beef-cheese_90220-1192.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Haircut & Styling.webp" alt="Haircut"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Double Beef Burger</h3>
-                            <p class="text-blue-600 font-bold">$ 11.20</p>
+                            <h3 class="font-bold text-sm text-slate-700">Haircut & Styling</h3>
+                            <p class="text-blue-600 font-bold">$ 35.00</p>
                         </div>
 
-                        <!-- Card 8 -->
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/glass-cola-with-ice-cubes_144627-14300.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Classic Manicure.jpg" alt="Manicure"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Large Coke</h3>
-                            <p class="text-blue-600 font-bold">$ 1.50</p>
+                            <h3 class="font-bold text-sm text-slate-700">Classic Manicure</h3>
+                            <p class="text-blue-600 font-bold">$ 25.00</p>
                         </div>
 
-                        <!-- Card 9 -->
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/fried-chicken-wings-with-sweet-chili-sauce_2829-20161.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Deluxe Pedicure.webp" alt="Pedicure"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Spicy Wings (6pcs)</h3>
-                            <p class="text-blue-600 font-bold">$ 4.99</p>
+                            <h3 class="font-bold text-sm text-slate-700">Deluxe Pedicure</h3>
+                            <p class="text-blue-600 font-bold">$ 30.00</p>
                         </div>
 
-                        <!-- Card 10 -->
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/vanilla-ice-cream-cone_144627-30043.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Full Leg Wax.webp" alt="Waxing"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Vanilla Cone</h3>
-                            <p class="text-blue-600 font-bold">$ 1.25</p>
+                            <h3 class="font-bold text-sm text-slate-700">Full Leg Wax</h3>
+                            <p class="text-blue-600 font-bold">$ 20.00</p>
                         </div>
 
-                        <!-- Card 11 -->
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/deep-fried-chicken-popcorn_1339-6821.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Bridal Makeup.png" alt="Makeup"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Popcorn Chicken</h3>
-                            <p class="text-blue-600 font-bold">$ 3.95</p>
+                            <h3 class="font-bold text-sm text-slate-700">Bridal Makeup</h3>
+                            <p class="text-blue-600 font-bold">$ 80.00</p>
                         </div>
 
-                        <!-- Card 12 -->
                         <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/orange-juice-glass_144627-17551.jpg"
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Full Hair Color.jpg" alt="Hair Color"
                                 class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Fresh Orange Juice</h3>
-                            <p class="text-blue-600 font-bold">$ 2.50</p>
-                        </div>
-                        <!-- Card 13 -->
-                        <div
-                            class="card bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center">
-                            <img src="https://img.freepik.com/free-photo/tortilla-wrap-with-falafel-fresh-vegetables_2829-20037.jpg"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Veggie Wrap</h3>
-                            <p class="text-blue-600 font-bold">$ 6.80</p>
+                            <h3 class="font-bold text-sm text-slate-700">Full Hair Color</h3>
+                            <p class="text-blue-600 font-bold">$ 55.00</p>
                         </div>
 
+                        <div
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Exfoliating Scrub.jpg" alt="Body Scrub"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Exfoliating Scrub</h3>
+                            <p class="text-blue-600 font-bold">$ 40.00</p>
+                        </div>
+
+                        <div
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Keratin Therapy.avif" alt="Hair Treatment"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Keratin Therapy</h3>
+                            <p class="text-blue-600 font-bold">$ 95.00</p>
+                        </div>
+
+                        <div
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Eyebrow Threading.jpg" alt="Eyebrows"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Eyebrow Threading</h3>
+                            <p class="text-blue-600 font-bold">$ 12.00</p>
+                        </div>
+
+                        <div
+                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                            <img src="./images/Hot Stone Massage.jpg" alt="Hot Stone"
+                                class="h-32 w-full object-cover rounded-2xl mb-2">
+                            <h3 class="font-bold text-sm text-slate-700">Hot Stone Massage</h3>
+                            <p class="text-blue-600 font-bold">$ 75.00</p>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
@@ -288,75 +328,74 @@
             <section class="w-full hidden lg:block lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
                 <div class="p-6 flex flex-col h-full">
 
-                    <div class="flex justify-between items-center mb-1">
-                        <h2 class="text-xl font-bold text-slate-800">Order List</h2>
-                        <div class="flex gap-1">
-                            <button class="btn btn-ghost btn-xs text-slate-400"><i data-lucide="percent"
-                                    class="w-4 h-4"></i></button>
-                            <button class="btn btn-ghost btn-xs text-red-400"><i data-lucide="trash-2"
-                                    class="w-4 h-4"></i></button>
-                            <button class="btn btn-ghost btn-xs text-slate-400"><i data-lucide="more-vertical"
-                                    class="w-4 h-4"></i></button>
+                    <!-- Customer Information -->
+                    <div class="p-2 pt-4 bg-slate-50 rounded-xl border border-slate-200 mb-4">
+                        <div class="mb-3">
+                            <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Customer
+                                Information</h2>
+                            <div class="mt-1">
+                                <p class="text-md font-bold text-slate-800">Nur Sapa</p>
+                                <p class="text-xs text-slate-500 font-medium">+1 (555) 012-3456</p>
+                            </div>
                         </div>
-                    </div>
-                    <p class="text-[10px] text-slate-400 mb-4 uppercase font-bold tracking-widest">Transaction #00389
-                    </p>
 
-                    <div class="flex gap-2 mb-6 bg-white p-1 rounded-2xl shadow-sm">
-                        <button
-                            class="btn btn-sm flex-1 rounded-xl bg-blue-500 text-white border-none hover:bg-blue-600">Eat
-                            In</button>
-                        <button
-                            class="btn btn-sm flex-1 rounded-xl bg-transparent text-slate-400 border-none hover:bg-slate-50">Delivery</button>
+
                     </div>
 
+                    <!-- Order Items -->
                     <div class="flex-1 overflow-y-auto scrollbar-hide space-y-3 mb-6 pr-2">
 
-                        <div class="bg-[#1e2632] text-white rounded-[1.5rem] p-4 shadow-lg relative overflow-hidden">
-                            <div class="flex items-center gap-3">
-                                <img src="https://img.freepik.com/free-photo/crispy-fried-chicken-plate_144627-27359.jpg"
-                                    class="w-12 h-12 rounded-xl object-cover" />
-                                <div class="flex-1">
-                                    <h4 class="text-[10px] font-bold uppercase tracking-wider opacity-80">Crispy Strips
-                                        Meal</h4>
-                                    <p class="text-sm font-black">14.99$</p>
-                                </div>
-                                <div class="flex flex-col items-center bg-slate-700/50 rounded-lg px-1">
-                                    <button class="text-white hover:text-blue-400"><i data-lucide="chevron-up"
-                                            class="w-4 h-4"></i></button>
-                                    <span class="text-[10px] font-bold py-0.5">2</span>
-                                    <button class="text-white hover:text-blue-400"><i data-lucide="chevron-down"
-                                            class="w-4 h-4"></i></button>
-                                </div>
+                        <!-- Card 1 -->
+                        <div
+                            class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                            <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                class="w-12 h-12 rounded-lg object-cover" />
+
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                <p class="text-sm font-black text-blue-600">$ 45.00</p>
                             </div>
-                            <div class="flex justify-between mt-4 pt-3 border-t border-slate-700">
-                                <button
-                                    class="text-[9px] font-bold uppercase tracking-tighter opacity-60 hover:opacity-100">Add
-                                    Note</button>
-                                <button
-                                    class="text-[9px] font-bold uppercase tracking-tighter opacity-60 hover:opacity-100">Discount</button>
-                                <button
-                                    class="text-[9px] font-bold uppercase tracking-tighter text-red-400 hover:text-red-300">Remove</button>
+
+                            <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                    <i data-lucide="minus" class="w-4 h-4"></i>
+                                </button>
+                                <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                    <i data-lucide="plus" class="w-4 h-4"></i>
+                                </button>
                             </div>
+
+                            <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                            <img src="./images/sweedish.jpg"
+                                class="w-12 h-12 rounded-lg object-cover" />
+
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold text-slate-700 uppercase">Swedish Massage</h4>
+                                <p class="text-sm font-black text-blue-600">$ 60.00</p>
+                            </div>
+
+                            <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                    <i data-lucide="minus" class="w-4 h-4"></i>
+                                </button>
+                                <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                    <i data-lucide="plus" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+
+                            <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
                         </div>
 
-                        <div
-                            class="bg-white rounded-[1.5rem] p-4 shadow-sm border border-slate-100 flex items-center gap-3">
-                            <img src="https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg"
-                                class="w-12 h-12 rounded-xl object-cover" />
-                            <div class="flex-1">
-                                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Light Strips
-                                    Box</h4>
-                                <p class="text-sm font-black text-slate-800">5.90$</p>
-                            </div>
-                            <div class="flex items-center gap-2 text-slate-300">
-                                <button class="hover:text-slate-600"><i data-lucide="minus-circle"
-                                        class="w-4 h-4"></i></button>
-                                <span class="text-xs font-bold text-slate-800">1</span>
-                                <button class="hover:text-slate-600"><i data-lucide="plus-circle"
-                                        class="w-4 h-4"></i></button>
-                            </div>
-                        </div>
 
                     </div>
 
