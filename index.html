@@ -35,11 +35,37 @@
         *::after {
             box-sizing: border-box;
         }
+
+        .view-section.hidden {
+            display: none;
+        }
     </style>
 
-    
+
 
     <script>
+
+        function showSection(sectionId) {
+            // 1. Get all sections that have an ID starting with 'section-'
+            const sections = ['section-dashboard', 'section-details', 'section-home'];
+
+            sections.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    // Add 'hidden' to everyone
+                    element.classList.add('hidden');
+                    // Also ensure 'flex' is removed so it doesn't conflict with hidden
+                    element.classList.remove('flex');
+                }
+            });
+
+            // 2. Show the specific section the user wants
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.remove('hidden');
+                target.classList.add('flex'); // Add flex back so the layout stays correct
+            }
+        }
 
         function showHome() {
             document.getElementById("mainContent").innerHTML = homeContent;
@@ -47,203 +73,9 @@
 
     </script>
 
-    <script>
-        function showDashboard() {
-            document.getElementById("mainContent").innerHTML = `
-            <div class="w-full p-12 bg-white min-h-screen">
-    <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
-        <h2 class="text-xl font-black text-slate-800">Transaction History</h2>
-        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors">
-            Export Report
-        </button>
-    </div>
-
-    <table class="w-full align-center text-left border-collapse">
-        <thead>
-            <tr class="text-slate-400 text-[12px] uppercase tracking-widest border-b border-slate-100 bg-slate-50/50">
-                <th class="py-4 pl-6">SL No</th>
-                <th class="py-4">Customer</th>
-                <th class="py-4 hidden md:table-cell">Date</th>
-                <th class="py-4 hidden md:table-cell">Chair</th>
-                <th class="py-4">Service</th>
-                <th class="py-4 text-right">Bill</th>
-                <th class="py-4 text-right">Pay</th>
-                <th class="py-4 pr-6 text-right hidden md:table-cell">Due</th>
-            </tr>
-        </thead>
-        <tbody class="text-[12px] font-medium text-slate-600">
-            <tr class="border-b border-slate-50 hover:bg-blue-50/30 transition-colors group">
-                <td class="py-5 pl-6 font-bold text-slate-800">01</td>
-                <td class="py-5 font-bold text-slate-800">John Doe</td>
-                <td class="py-5 hidden md:table-cell">10 Mar, 2026</td>
-                <td class="py-5 hidden md:table-cell">Chair 05</td>
-                <td class="py-5">
-                    <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-bold">Facial, Massage</span>
-                </td>
-                <td class="py-5 text-right font-black text-slate-800">$506.00</td>
-                <td class="py-5 text-right font-bold text-green-600">$506.00</td>
-                <td class="py-5 pr-6 text-right hidden md:table-cell text-red-500 font-bold">$0.00</td>
-                <td class="  text-right">
-                    <button onclick="showDetails()" class="btn btn-sm btn-ghost hover:bg-blue-500 hover:text-white">
-    Details
-</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-        `;
-        }
-    </script>
-
-    <script>
-        function showDetails() {
-
-            document.getElementById("mainContent").innerHTML = `
-
-<div class="w-full h-full bg-white p-6 space-y-6">
-
-<!-- Top Cards -->
-<div class="flex flex-col md:flex-row justify-between w-full gap-6">
-
-<div class="bg-slate-50 p-5 rounded-xl shadow-xl px-12">
-<h2 class="font-bold text-slate-700 mb-3">Customer Info</h2>
-<p><b>Name:</b> Nur Sapa</p>
-<p><b>Phone:</b> 01700000000</p>
-</div>
-
-<div class="bg-slate-50 p-5 rounded-xl shadow-xl px-12">
-<h2 class="font-bold text-slate-700 mb-3">Transaction Info</h2>
-<p><b>Date:</b> 10 Mar 2026</p>
-<p><b>Chair:</b> Chair 05</p>
-</div>
-
-</div>
 
 
-<!-- Tables Section -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
 
-
-<!-- Service Table (8 column width) -->
-<div class="lg:col-span-8">
-
-<div class="border rounded-xl overflow-hidden">
-
-<table class="w-full text-sm">
-
-<thead class="bg-slate-50 text-xs uppercase text-slate-500">
-<tr>
-<th class="p-3 text-left">SL</th>
-<th class="p-3 text-left">Service</th>
-<th class="p-3 text-right">Payment</th>
-</tr>
-</thead>
-
-<tbody class="text-slate-600">
-
-<tr class="border-t">
-<td class="p-3">01</td>
-<td class="p-3">Facial</td>
-<td class="p-3 text-right">$200</td>
-</tr>
-
-<tr class="border-t">
-<td class="p-3">02</td>
-<td class="p-3">Massage</td>
-<td class="p-3 text-right">$306</td>
-</tr>
-
-</tbody>
-
-</table>
-
-
-<!-- Bill Summary -->
-<div class="p-4 border-t space-y-2 text-sm">
-
-<div class="flex justify-between">
-<span>Subtotal</span>
-<span>$506</span>
-</div>
-
-<div class="flex justify-between">
-<span>Discount</span>
-<span>$0</span>
-</div>
-
-<div class="flex justify-between">
-<span>VAT</span>
-<span>$0</span>
-</div>
-
-<div class="flex justify-between font-bold text-lg">
-<span>Net Bill</span>
-<span>$506</span>
-</div>
-
-<div class="flex justify-between text-green-600 font-bold">
-<span>Paid</span>
-<span>$506</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- Payment History Table (4 column width) -->
-<div class="lg:col-span-4">
-
-<div class="border rounded-xl overflow-hidden">
-
-<div class="p-4 border-b font-bold">
-Payment History
-</div>
-
-<table class="w-full text-sm">
-
-<thead class="bg-slate-50 text-xs uppercase text-slate-500">
-<tr>
-<th class="p-3 text-left">SL</th>
-<th class="p-3 text-left">Date</th>
-<th class="p-3 text-right">Paid</th>
-</tr>
-</thead>
-
-<tbody class="text-slate-600">
-
-<tr class="border-t">
-<td class="p-3">01</td>
-<td class="p-3">10 Mar 2026</td>
-<td class="p-3 text-right text-green-600">$506</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- Back Button -->
-<button onclick="showDashboard()" 
-class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-Back
-</button>
-
-</div>
-
-`;
-
-        }
-    </script>
 
 </head>
 
@@ -265,17 +97,13 @@ Back
                     <span class="text-[10px] mt-1">Home</span>
                 </button>
 
-                <button onclick="showDashboard()"
+                <button onclick="showSection('section-dashboard')"
                     class="btn btn-ghost flex flex-col items-center h-20 hover:bg-slate-700 hover:text-white border-none">
                     <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
-                    <span class="text-[10px] mt-1">Dash</span>
+                    <span class="text-[10px] mt-1">Orders</span>
                 </button>
 
-                <button
-                    class="btn btn-ghost flex flex-col items-center h-20 hover:bg-slate-700 hover:text-white border-none">
-                    <i data-lucide="wallet" class="w-6 h-6"></i>
-                    <span class="text-[10px] mt-1">Cash</span>
-                </button>
+
             </nav>
 
             <div class="mt-auto flex flex-col gap-4">
@@ -291,18 +119,24 @@ Back
         <header class="md:hidden bg-[#1e2632] text-white p-2 flex justify-between items-center relative">
 
             <div class="dropdown">
-                <div tabindex="0" role="button"
-                    class="flex items-center gap-3 cursor-pointer p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <div class="flex flex items-center gap-3 cursor-pointer p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
+                    <div tabindex="0" role="button"
+                        class="">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+
+                    </div>
                     <span class="font-bold uppercase tracking-wider">POS System</span>
                 </div>
 
                 <ul tabindex="0"
                     class="dropdown-content menu bg-white text-slate-800 rounded-2xl z-[60] w-60 p-3 mt-3 shadow-2xl border border-slate-100">
-                    <li><a class="font-bold text-blue-600"><i data-lucide="home" class="w-4 h-4"></i> Home</a></li>
-                    <li><a><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard</a></li>
-                    <li><a><i data-lucide="arrow-left-right" class="w-4 h-4"></i> Transactions</a></li>
-                    <div class="divider my-1"></div>
+                    <button onclick="showHome()">
+                        <li><a><i data-lucide="home" class="w-4 h-4"></i> Home</a></li>
+                    </button>
+                    <button onclick="showSection('section-dashboard')">
+                        <li><a><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Orders</a></li>
+                    </button>
+
                     <li><a class="text-red-500 hover:bg-red-50"><i data-lucide="power" class="w-4 h-4"></i> Logout</a>
                     </li>
                 </ul>
@@ -317,366 +151,579 @@ Back
         <main id="mainContent" class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
          md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner">
 
-            <!-- Choose Category -->
-            <section class="flex-1 p-4  overflow-y-auto scrollbar-hide">
-                <!-- Menu Items -->
-                <div class="max-w-5xl mx-auto">
+            <!-- Home Section -->
+            <section id="section-home" class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
+         md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner view-section ">
+                <!-- Choose Category -->
+                <div class="flex-1 p-4  overflow-y-auto scrollbar-hide">
+                    <!-- Menu Items -->
+                    <div class="max-w-5xl mx-auto">
 
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                        <h1 class="text-2xl font-bold text-slate-800">Choose Category</h1>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <h1 class="text-2xl font-bold text-slate-800">Choose Category</h1>
 
-                        <div class="relative w-full md:w-72">
-                            <span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
-                                <i data-lucide="search" class="w-4 h-4"></i>
-                            </span>
-                            <input type="text" placeholder="Search in Menu..."
-                                class="input input-bordered w-full pl-10 bg-slate-50 border-slate-200 focus:border-blue-500 rounded-xl" />
+                            <div class="relative w-full md:w-72">
+                                <span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
+                                    <i data-lucide="search" class="w-4 h-4"></i>
+                                </span>
+                                <input type="text" placeholder="Search in Menu..."
+                                    class="input input-bordered w-full pl-10 bg-slate-50 border-slate-200 focus:border-blue-500 rounded-xl" />
+                            </div>
                         </div>
+
+                        <!-- Category Buttons -->
+                        <div class="w-full overflow-hidden">
+                            <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide w-full flex-nowrap">
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center bg-white shadow-md">
+                                        <i data-lucide="layout-grid" class="w-6 h-6 text-blue-500"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-blue-600">All</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="smile" class="w-8 h-8 text-pink-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Facial</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="hand-heart" class="w-8 h-8 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Massage</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="scissors" class="w-8 h-8 text-slate-600"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Hair</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="sparkles" class="w-8 h-8 text-rose-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Nails</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="brush" class="w-8 h-8 text-orange-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Makeup</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="droplet" class="w-8 h-8 text-amber-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Waxing</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="gem" class="w-8 h-8 text-teal-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Bridal</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="footprints" class="w-8 h-8 text-emerald-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Pedicure</span>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+                                    <div
+                                        class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
+                                        <i data-lucide="waves" class="w-8 h-8 text-cyan-400"></i>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-500">Spa Therapy</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="flex justify-between items-center ">
+                            <h2 class="text-lg font-bold">Items <span class="text-slate-400 font-normal text-sm">(44
+                                    items)</span></h2>
+                        </div>
+
+                        <!-- Card Section -->
+                        <div
+                            class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-4 gap-2 mt-4">
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp" alt="Facial"
+                                    class="rounded-2xl h-32 w-full object-cover mb-2" />
+                                <h3 class="font-bold text-sm text-slate-700">Gold Facial</h3>
+                                <p class="text-blue-600 font-bold">$ 45.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/sweedish.jpg" alt="Massage"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Swedish Massage</h3>
+                                <p class="text-blue-600 font-bold">$ 60.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Haircut & Styling.webp" alt="Haircut"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Haircut & Styling</h3>
+                                <p class="text-blue-600 font-bold">$ 35.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Classic Manicure.jpg" alt="Manicure"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Classic Manicure</h3>
+                                <p class="text-blue-600 font-bold">$ 25.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Deluxe Pedicure.webp" alt="Pedicure"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Deluxe Pedicure</h3>
+                                <p class="text-blue-600 font-bold">$ 30.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Full Leg Wax.webp" alt="Waxing"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Full Leg Wax</h3>
+                                <p class="text-blue-600 font-bold">$ 20.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Bridal Makeup.png" alt="Makeup"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Bridal Makeup</h3>
+                                <p class="text-blue-600 font-bold">$ 80.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Full Hair Color.jpg" alt="Hair Color"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Full Hair Color</h3>
+                                <p class="text-blue-600 font-bold">$ 55.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Exfoliating Scrub.jpg" alt="Body Scrub"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Exfoliating Scrub</h3>
+                                <p class="text-blue-600 font-bold">$ 40.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Keratin Therapy.avif" alt="Hair Treatment"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Keratin Therapy</h3>
+                                <p class="text-blue-600 font-bold">$ 95.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Eyebrow Threading.jpg" alt="Eyebrows"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Eyebrow Threading</h3>
+                                <p class="text-blue-600 font-bold">$ 12.00</p>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
+                                <img src="./images/Hot Stone Massage.jpg" alt="Hot Stone"
+                                    class="h-32 w-full object-cover rounded-2xl mb-2">
+                                <h3 class="font-bold text-sm text-slate-700">Hot Stone Massage</h3>
+                                <p class="text-blue-600 font-bold">$ 75.00</p>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
 
-                    <!-- Category Buttons -->
-                    <div class="w-full overflow-hidden">
-                        <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide w-full flex-nowrap">
+                <!-- Order List -->
+                <div class="w-full hidden lg:block lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
+                    <div class="pt-4 pb-4 pl-4 flex flex-col h-full">
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center bg-white shadow-md">
-                                    <i data-lucide="layout-grid" class="w-6 h-6 text-blue-500"></i>
+                        <!-- Customer Information -->
+                        <div class="p-2 pt-4 bg-slate-50 rounded-xl border border-slate-200 mb-4">
+                            <div class="mb-3">
+                                <h2 class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Customer
+                                    Information</h2>
+                                <div class="mt-1">
+                                    <input type="text" placeholder="Enter customer name" class="border rounded border-slate-300 p-1 
+                                    focus:border-blue-500  text-sm" />
+                                    <input type="tel" placeholder="Enter customer phone" class="border rounded border-slate-300 p-1 
+                                    focus:border-blue-500  text-sm" />
                                 </div>
-                                <span class="text-xs font-bold text-blue-600">All</span>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="smile" class="w-8 h-8 text-pink-400"></i>
+
+                        </div>
+
+                        <!-- Order Items -->
+                        <div class="flex-1 overflow-y-auto scrollbar-hide space-y-3 mb-6 pr-2">
+
+                            <!-- Card 1 -->
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                    class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 45.00</p>
                                 </div>
-                                <span class="text-xs font-semibold text-slate-500">Facial</span>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <!-- Card 2 -->
+
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/sweedish.jpg" class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Swedish Massage</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 60.00</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="hand-heart" class="w-8 h-8 text-purple-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Massage</span>
+
+                        </div>
+
+                        <!-- Summary Payment -->
+                        <div
+                            class="grid grid-cols-2 sm:grid-cols-3  gap-2 mb-6 pt-4 border-t border-dashed border-slate-200">
+
+                            <div
+                                class="bg-indigo-50 p-2 rounded-lg border-l-4 border-indigo-600 shadow-sm border border-indigo-100 transition-transform hover:scale-105">
+                                <p class="text-[9px] font-bold text-indigo-500 uppercase leading-tight">Items</p>
+                                <p class="text-sm font-black text-indigo-900 mt-0.5">2</p>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="scissors" class="w-8 h-8 text-slate-600"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Hair</span>
+                            <div
+                                class="bg-blue-50 p-2 rounded-lg border-l-4 border-blue-600 shadow-sm border border-blue-100 transition-transform hover:scale-105">
+                                <p class="text-[9px] font-bold text-blue-500 uppercase leading-tight">Subtotal</p>
+                                <p class="text-sm font-black text-blue-900 mt-0.5">$105.00</p>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="sparkles" class="w-8 h-8 text-rose-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Nails</span>
+                            <div
+                                class="bg-rose-50 p-2 rounded-lg border-l-4 border-rose-500 shadow-sm border border-rose-100 transition-transform hover:scale-105">
+                                <p class="text-[9px] font-bold text-rose-500 uppercase leading-tight">Discount</p>
+                                <p class="text-sm font-black text-rose-600 mt-0.5">-$10.00</p>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="brush" class="w-8 h-8 text-orange-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Makeup</span>
+                            <div
+                                class="bg-violet-50 p-2 rounded-lg border-l-4 border-violet-700 shadow-sm border border-violet-100 transition-transform hover:scale-105">
+                                <p class="text-[9px] font-bold text-violet-500 uppercase leading-tight">Total</p>
+                                <p class="text-sm font-black text-violet-900 mt-0.5">$95.00</p>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="droplet" class="w-8 h-8 text-amber-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Waxing</span>
+                            <div
+                                class="bg-amber-50 p-2 rounded-lg border-l-4 border-amber-500 shadow-sm border border-amber-100 transition-transform hover:scale-105">
+                                <p class="text-[9px] font-bold text-amber-600 uppercase leading-tight">VAT (5%)</p>
+                                <p class="text-sm font-black text-amber-900 mt-0.5">$4.75</p>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="gem" class="w-8 h-8 text-teal-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Bridal</span>
+                            <div
+                                class="bg-blue-500 p-2 rounded-lg border shadow-md border-emerald-700 transition-transform hover:scale-105">
+                                <p class="text-[9px] font-bold text-emerald-100 uppercase leading-tight">Net Bill</p>
+                                <p class="text-sm font-black text-white mt-0.5">$99.75</p>
                             </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="footprints" class="w-8 h-8 text-emerald-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Pedicure</span>
-                            </div>
+                        </div>
 
-                            <div class="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-slate-100 flex items-center justify-center bg-white shadow-sm hover:shadow-md transition-all">
-                                    <i data-lucide="waves" class="w-8 h-8 text-cyan-400"></i>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500">Spa Therapy</span>
-                            </div>
 
+                        <!-- Payment Methods -->
+                        <!-- <div class="grid grid-cols-4 gap-2 mb-6">
+                            <button
+                                class="flex flex-row  items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
+                                <i data-lucide="banknote" class="w-4 h-4 text-green-500 mr-2 mt-1 mb-1"></i>
+                                <span class="text-[8px] font-bold text-slate-400 uppercase">Cash</span>
+                            </button>
+                            <button
+                                class="flex flex-row  items-center justify-center p-2 bg-blue-50 border border-blue-200 rounded-xl hover:border-blue-500 transition-all">
+                                <i data-lucide="credit-card" class="w-4 h-4 text-blue-500 mr-2 mt-1 mb-1"></i>
+                                <span class="text-[8px] font-bold text-blue-600 uppercase">Card</span>
+                            </button>
+                            <button
+                                class="flex flex-row  items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
+                                <i data-lucide="gift" class="w-4 h-4 text-orange-400 mr-2 mt-1 mb-1"></i>
+                                <span class="text-[8px] font-bold text-slate-400 uppercase">Mcash</span>
+                            </button>
+                            <button
+                                class="flex flex-row  items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
+                                <i data-lucide="layout-grid" class="w-4 h-4 text-blue-400 mr-2 mt-1 mb-1"></i>
+                                <span class="text-[8px] font-bold text-slate-400 uppercase">Other</span>
+                            </button>
+                        </div> -->
+
+                        <!-- Payment Action Buttons -->
+                        <div class="flex  w-full">
+                            <button title="Save & Print"
+                                class="btn btn-ghost bg-slate-300 rounded-sm px-4 hover:bg-slate-400 transition-colors">
+                                <i data-lucide="printer" class="w-5 h-5 text-slate-700"></i>
+                                <span>Save Only</span>
+                            </button>
+
+                           
+
+                            <button title="Make Payment"
+                                class="btn btn-primary flex-1 rounded-sm bg-blue-600 border-none text-white font-black text-md shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all active:scale-95">
+                                Pay $99.75
+                            </button>
                         </div>
 
                     </div>
-
-                    <div class="flex justify-between items-center ">
-                        <h2 class="text-lg font-bold">Items <span class="text-slate-400 font-normal text-sm">(44
-                                items)</span></h2>
-                    </div>
-
-                    <!-- Card Section -->
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-4 gap-2 mt-4">
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/gold-facial-cost-procedure-how-to-do.webp" alt="Facial"
-                                class="rounded-2xl h-32 w-full object-cover mb-2" />
-                            <h3 class="font-bold text-sm text-slate-700">Gold Facial</h3>
-                            <p class="text-blue-600 font-bold">$ 45.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/sweedish.jpg" alt="Massage"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Swedish Massage</h3>
-                            <p class="text-blue-600 font-bold">$ 60.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Haircut & Styling.webp" alt="Haircut"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Haircut & Styling</h3>
-                            <p class="text-blue-600 font-bold">$ 35.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Classic Manicure.jpg" alt="Manicure"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Classic Manicure</h3>
-                            <p class="text-blue-600 font-bold">$ 25.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Deluxe Pedicure.webp" alt="Pedicure"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Deluxe Pedicure</h3>
-                            <p class="text-blue-600 font-bold">$ 30.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Full Leg Wax.webp" alt="Waxing"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Full Leg Wax</h3>
-                            <p class="text-blue-600 font-bold">$ 20.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Bridal Makeup.png" alt="Makeup"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Bridal Makeup</h3>
-                            <p class="text-blue-600 font-bold">$ 80.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Full Hair Color.jpg" alt="Hair Color"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Full Hair Color</h3>
-                            <p class="text-blue-600 font-bold">$ 55.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Exfoliating Scrub.jpg" alt="Body Scrub"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Exfoliating Scrub</h3>
-                            <p class="text-blue-600 font-bold">$ 40.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Keratin Therapy.avif" alt="Hair Treatment"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Keratin Therapy</h3>
-                            <p class="text-blue-600 font-bold">$ 95.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Eyebrow Threading.jpg" alt="Eyebrows"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Eyebrow Threading</h3>
-                            <p class="text-blue-600 font-bold">$ 12.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all cursor-pointer p-4 items-center text-center rounded-xl">
-                            <img src="./images/Hot Stone Massage.jpg" alt="Hot Stone"
-                                class="h-32 w-full object-cover rounded-2xl mb-2">
-                            <h3 class="font-bold text-sm text-slate-700">Hot Stone Massage</h3>
-                            <p class="text-blue-600 font-bold">$ 75.00</p>
-                        </div>
-                    </div>
-
                 </div>
             </section>
 
-            <!-- Order List -->
-            <section class="w-full hidden lg:block lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
-                <div class="p-6 flex flex-col h-full">
-
-                    <!-- Customer Information -->
-                    <div class="p-2 pt-4 bg-slate-50 rounded-xl border border-slate-200 mb-4">
-                        <div class="mb-3">
-                            <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Customer
-                                Information</h2>
-                            <div class="mt-1">
-                                <p class="text-md font-bold text-slate-800">Nur Sapa</p>
-                                <p class="text-xs text-slate-500 font-medium">+1 (555) 012-3456</p>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- Order Items -->
-                    <div class="flex-1 overflow-y-auto scrollbar-hide space-y-3 mb-6 pr-2">
-
-                        <!-- Card 1 -->
-                        <div
-                            class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
-                            <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
-                                class="w-12 h-12 rounded-lg object-cover" />
-
-                            <div class="flex-1">
-                                <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
-                                <p class="text-sm font-black text-blue-600">$ 45.00</p>
-                            </div>
-
-                            <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
-                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
-                                    <i data-lucide="minus" class="w-4 h-4"></i>
-                                </button>
-                                <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
-                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
-                                    <i data-lucide="plus" class="w-4 h-4"></i>
-                                </button>
-                            </div>
-
-                            <button class="text-red-500 hover:text-red-700 transition-colors p-1">
-                                <i data-lucide="x" class="w-5 h-5"></i>
-                            </button>
-                        </div>
-                        <!-- Card 2 -->
-
-                        <div
-                            class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
-                            <img src="./images/sweedish.jpg" class="w-12 h-12 rounded-lg object-cover" />
-
-                            <div class="flex-1">
-                                <h4 class="text-xs font-bold text-slate-700 uppercase">Swedish Massage</h4>
-                                <p class="text-sm font-black text-blue-600">$ 60.00</p>
-                            </div>
-
-                            <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
-                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
-                                    <i data-lucide="minus" class="w-4 h-4"></i>
-                                </button>
-                                <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
-                                <button class="text-slate-400 hover:text-blue-500 transition-colors">
-                                    <i data-lucide="plus" class="w-4 h-4"></i>
-                                </button>
-                            </div>
-
-                            <button class="text-red-500 hover:text-red-700 transition-colors p-1">
-                                <i data-lucide="x" class="w-5 h-5"></i>
-                            </button>
-                        </div>
-
-
-                    </div>
-
-                    <!-- Summary Payment -->
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3  gap-3 mb-6 pt-4 border-t border-dashed border-slate-200">
-
-                        <div
-                            class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Subtotal</p>
-                            <p class="text-sm font-black text-slate-800 mt-1">$105.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm hover:border-red-200 transition-colors">
-                            <p class="text-[10px] font-bold text-red-400 uppercase tracking-wider">Discount</p>
-                            <p class="text-sm font-black text-red-600 mt-1">-$10.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm hover:border-slate-300 transition-colors">
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total</p>
-                            <p class="text-sm font-black text-slate-800 mt-1">$95.00</p>
-                        </div>
-
-                        <div
-                            class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm hover:border-slate-300 transition-colors">
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">VAT (5%)</p>
-                            <p class="text-sm font-black text-slate-800 mt-1">$4.75</p>
-                        </div>
-
-
-
-                        <div class="bg-blue-600 p-3 rounded-xl border border-blue-700 shadow-lg">
-                            <p class="text-[10px] font-bold text-blue-100 uppercase tracking-wider">Net Bill</p>
-                            <p class="text-sm font-black text-white mt-1">$99.75</p>
-                        </div>
-
-                    </div>
-
-
-                    <!-- Payment Methods -->
-                    <div class="grid grid-cols-4 gap-2 mb-6">
+            <!-- Dashboard Section -->
+            <section id="section-dashboard"
+                class="w-full hidden   bg-[#f8fafc] flex flex-col border-l border-slate-200">
+                <div class="w-full p-12 bg-white min-h-screen">
+                    <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+                        <h2 class="text-xl font-black text-slate-800">Transaction History</h2>
                         <button
-                            class="flex flex-row  items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
-                            <i data-lucide="banknote" class="w-4 h-4 text-green-500 mr-2 mt-1 mb-1"></i>
-                            <span class="text-[8px] font-bold text-slate-400 uppercase">Cash</span>
-                        </button>
-                        <button
-                            class="flex flex-row  items-center justify-center p-2 bg-blue-50 border border-blue-200 rounded-xl hover:border-blue-500 transition-all">
-                            <i data-lucide="credit-card" class="w-4 h-4 text-blue-500 mr-2 mt-1 mb-1"></i>
-                            <span class="text-[8px] font-bold text-blue-600 uppercase">Card</span>
-                        </button>
-                        <button
-                            class="flex flex-row  items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
-                            <i data-lucide="gift" class="w-4 h-4 text-orange-400 mr-2 mt-1 mb-1"></i>
-                            <span class="text-[8px] font-bold text-slate-400 uppercase">Mcash</span>
-                        </button>
-                        <button
-                            class="flex flex-row  items-center justify-center p-2 bg-white rounded-xl border border-slate-100 hover:border-blue-500 transition-all">
-                            <i data-lucide="layout-grid" class="w-4 h-4 text-blue-400 mr-2 mt-1 mb-1"></i>
-                            <span class="text-[8px] font-bold text-slate-400 uppercase">Other</span>
+                            class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors">
+                            Export Report
                         </button>
                     </div>
 
-                    <div class="flex ">
-                        <button class="btn btn-ghost bg-slate-200 rounded-sm px-4"><i data-lucide="printer"
-                                class="w-5 h-5"></i></button>
-                        <button
-                            class="btn btn-primary flex-1 rounded-sm   bg-blue-500 border-none text-white font-black text-md shadow-xl shadow-blue-100 hover:bg-blue-600">
-                            Pay $99.75
-                        </button>
-                    </div>
+                    <table class="w-full align-center text-left border-collapse">
+                        <thead>
+                            <tr
+                                class="text-slate-400 text-[12px] uppercase tracking-widest border-b border-slate-100 bg-slate-50/50">
+                                <th class="py-4 pl-6">SL No</th>
+                                <th class="py-4">Customer</th>
+                                <th class="py-4 hidden md:table-cell">Date</th>
+                                <th class="py-4 hidden md:table-cell">Chair</th>
+                                <th class="py-4">Service</th>
+                                <th class="py-4 text-right">Bill</th>
+                                <th class="py-4 text-right">Pay</th>
+                                <th class="py-4 pr-6 text-right hidden md:table-cell">Due</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-[12px] font-medium text-slate-600">
+                            <tr class="border-b border-slate-50 hover:bg-blue-50/30 transition-colors group">
+                                <td class="py-5 pl-6 font-bold text-slate-800">01</td>
+                                <td class="py-5 font-bold text-slate-800">John Doe</td>
+                                <td class="py-5 hidden md:table-cell">10 Mar, 2026</td>
+                                <td class="py-5 hidden md:table-cell">Chair 05</td>
+                                <td class="py-5">
+                                    <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-bold">Facial,
+                                        Massage</span>
+                                </td>
+                                <td class="py-5 text-right font-black text-slate-800">$506.00</td>
+                                <td class="py-5 text-right font-bold text-green-600">$506.00</td>
+                                <td class="py-5 pr-6 text-right hidden md:table-cell text-red-500 font-bold">$0.00</td>
+                                <td class="  text-right">
+                                    <button onclick="showSection('section-details')"
+                                        class="btn btn-sm btn-ghost hover:bg-blue-500 hover:text-white">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </section>
+
+            <!-- Details Section -->
+            <section id="section-details" class="w-full hidden">
+                <div class="w-full h-full bg-white p-6 space-y-6">
+
+                    <!-- Top Cards -->
+                    <div class="flex flex-col md:flex-row justify-between w-full gap-6">
+
+                        <div class="bg-slate-50 p-5 rounded-xl shadow-xl px-12">
+                            <h2 class="font-bold text-slate-700 mb-3">Customer Info</h2>
+                            <p><b>Name:</b> Nur Sapa</p>
+                            <p><b>Phone:</b> 01700000000</p>
+                        </div>
+
+                        <div class="bg-slate-50 p-5 rounded-xl shadow-xl px-12">
+                            <h2 class="font-bold text-slate-700 mb-3">Transaction Info</h2>
+                            <p><b>Date:</b> 10 Mar 2026</p>
+                            <p><b>Chair:</b> Chair 05</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tables Section -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+
+
+                        <!-- Service Table (8 column width) -->
+                        <div class="lg:col-span-8">
+
+                            <div class="border rounded-xl overflow-hidden">
+
+                                <table class="w-full text-sm">
+
+                                    <thead class="bg-slate-50 text-xs uppercase text-slate-500">
+                                        <tr>
+                                            <th class="p-3 text-left">SL</th>
+                                            <th class="p-3 text-left">Service</th>
+                                            <th class="p-3 text-right">Payment</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="text-slate-600">
+
+                                        <tr class="border-t">
+                                            <td class="p-3">01</td>
+                                            <td class="p-3">Facial</td>
+                                            <td class="p-3 text-right">$200</td>
+                                        </tr>
+
+                                        <tr class="border-t">
+                                            <td class="p-3">02</td>
+                                            <td class="p-3">Massage</td>
+                                            <td class="p-3 text-right">$306</td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+
+                                <!-- Bill Summary -->
+                                <div class="p-4 border-t space-y-2 text-sm">
+
+                                    <div class="flex justify-between">
+                                        <span>Subtotal</span>
+                                        <span>$506</span>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <span>Discount</span>
+                                        <span>$0</span>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <span>VAT</span>
+                                        <span>$0</span>
+                                    </div>
+
+                                    <div class="flex justify-between font-bold text-lg">
+                                        <span>Net Bill</span>
+                                        <span>$506</span>
+                                    </div>
+
+                                    <div class="flex justify-between text-green-600 font-bold">
+                                        <span>Paid</span>
+                                        <span>$506</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Payment History Table (4 column width) -->
+                        <div class="lg:col-span-4">
+
+                            <div class="border rounded-xl overflow-hidden">
+
+                                <div class="p-4 border-b font-bold">
+                                    Payment History
+                                </div>
+
+                                <table class="w-full text-sm">
+
+                                    <thead class="bg-slate-50 text-xs uppercase text-slate-500">
+                                        <tr>
+                                            <th class="p-3 text-left">SL</th>
+                                            <th class="p-3 text-left">Date</th>
+                                            <th class="p-3 text-right">Paid</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="text-slate-600">
+
+                                        <tr class="border-t">
+                                            <td class="p-3">01</td>
+                                            <td class="p-3">10 Mar 2026</td>
+                                            <td class="p-3 text-right text-green-600">$506</td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Back Button -->
+                    <button onclick="showSection('section-dashboard')"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Back
+                    </button>
+
+                </div>
+
             </section>
         </main>
 
@@ -687,14 +734,14 @@ Back
     <script>
         lucide.createIcons();
     </script>
-    
+
     <script>
 
         let homeContent = document.getElementById("mainContent").innerHTML;
 
     </script>
 
-    
+
 </body>
 
 </html>
