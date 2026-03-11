@@ -140,14 +140,14 @@
 
         </header>
 
-        <main id="mainContent" class=" flex flex-col md:flex-row  bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
+        <main id="mainContent" class="w-full flex flex-col md:flex-row md:overflow-hidden bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
          md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner ">
 
             <!-- Home Section -->
-            <section id="section-home" class=" flex flex-col lg:flex-row w-full h-full  overflow-hidden bg-white   lg:flex-row  
+            <section id="section-home" class=" flex flex-col lg:flex-row w-full h-full  md:overflow-hidden bg-white   lg:flex-row  
          md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner view-section ">
                 <!-- Choose Category -->
-                <div class="flex-1 p-4   overflow-y-auto scrollbar-hide">
+                <div class="flex-1 p-4   md:overflow-y-auto scrollbar-hide">
                     <!-- Menu Items -->
                     <div class="max-w-5xl mx-auto">
 
@@ -380,7 +380,7 @@
                             <div class="mb-3">
                                 <h2 class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Customer
                                     Information</h2>
-                                <div class="mt-1">
+                                <div class="mt-1 flex flex-row gap-2">
                                     <input type="text" placeholder="Enter customer name" class="border rounded border-slate-300 p-1 
                                     focus:border-blue-500  text-sm" />
                                     <input type="tel" placeholder="Enter customer phone" class="border rounded border-slate-300 p-1 
@@ -445,6 +445,83 @@
                                 </button>
                             </div>
 
+                            <!-- Card 3  -->
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                    class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 45.00</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                                <!-- Card 4  -->
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                    class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 45.00</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                    class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 45.00</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
 
                         </div>
 
@@ -545,8 +622,8 @@
                             </div>
 
                             <div class="p-4 space-y-3">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                    <div class="col-span-1 md:col-span-3">
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="">
                                         <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Memo
                                             No.</label>
                                         <input type="text" placeholder="e.g., #INV-001"
