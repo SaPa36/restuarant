@@ -71,7 +71,7 @@
 
 </head>
 
-<body class="bg-[#1e2632] font-sans h-screen overflow-hidden text-slate-800">
+<body class="bg-[#1e2632] font-sans h-screen md:overflow-hidden text-slate-800">
 
     <div class="flex flex-col md:flex-row h-full w-full">
 
@@ -140,14 +140,14 @@
 
         </header>
 
-        <main id="mainContent" class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
-         md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner">
+        <main id="mainContent" class=" flex flex-col md:flex-row  bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
+         md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner ">
 
             <!-- Home Section -->
-            <section id="section-home" class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-white   lg:flex-row  
+            <section id="section-home" class=" flex flex-col lg:flex-row w-full h-full  overflow-hidden bg-white   lg:flex-row  
          md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner view-section ">
                 <!-- Choose Category -->
-                <div class="flex-1 p-4  overflow-y-auto scrollbar-hide">
+                <div class="flex-1 p-4   overflow-y-auto scrollbar-hide">
                     <!-- Menu Items -->
                     <div class="max-w-5xl mx-auto">
 
@@ -371,8 +371,8 @@
                 </div>
 
                 <!-- Order List -->
-                <div
-                    class="w-full pr-4 hidden lg:block lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
+
+                <div class="w-full pr-4 lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
                     <div class="pt-4 pb-4 pl-4 flex flex-col h-full">
 
                         <!-- Customer Information -->
@@ -532,13 +532,101 @@
                         </div>
 
                     </div>
+                    <!-- Payment Modal -->
+                    <div id="paymentModal"
+                        class="hidden fixed inset-0  z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center ">
+                        <div
+                            class="bg-white p-4 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+                            <div class="bg-slate-50   flex justify-between items-center">
+                                <h2 class="text-xl font-bold text-slate-800 tracking-tight">Payment Details</h2>
+                                <div class="bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold text-sm">
+                                    Total: 99.75$.
+                                </div>
+                            </div>
+
+                            <div class="p-4 space-y-3">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <div class="col-span-1 md:col-span-3">
+                                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Memo
+                                            No.</label>
+                                        <input type="text" placeholder="e.g., #INV-001"
+                                            class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase mb-1">Cash</label>
+                                        <input type="number"
+                                            class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase mb-1">Card</label>
+                                        <input type="number"
+                                            class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase mb-1">MCash</label>
+                                        <input type="number"
+                                            class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4 bg-slate-50  rounded-xl border border-slate-100">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Paid Amount
+                                            *</label>
+                                        <input type="number" readonly value="0"
+                                            class="w-full bg-slate-200 border-transparent rounded-lg p-2 text-lg font-bold text-blue-600">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Due
+                                            Amount</label>
+                                        <input type="number" readonly value="0"
+                                            class="w-full bg-slate-200 border-transparent rounded-lg p-2 text-lg font-bold text-red-600">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Total
+                                            Pay</label>
+                                        <input type="number" class="w-full border-slate-300 border rounded-xl p-2">
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase mb-1">Change/Return</label>
+                                        <input type="number" class="w-full border-slate-300 border rounded-xl p-2">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Remarks</label>
+                                    <textarea
+                                        class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500"
+                                        rows="2"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="p-2 bg-slate-50 border-t flex justify-end gap-3">
+                                <button onclick="toggleModal()"
+                                    class="px-6 py-3 text-slate-600 font-semibold hover:text-slate-800 transition">Cancel</button>
+                                <button
+                                    class="px-8 py-3 bg-green-600 text-white rounded-xl font-bold shadow-lg shadow-green-200 hover:bg-green-700 transition-transform active:scale-95">Save
+                                    Payment</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </section>
 
             <!-- Dashboard Section -->
             <section id="section-dashboard"
                 class="w-full hidden   bg-[#f8fafc] flex flex-col border-l border-slate-200">
-                <div class="w-full p-12 bg-white min-h-screen">
+                <div class="w-full lg:p-12 bg-white min-h-screen">
                     <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
                         <h2 class="text-xl font-black text-slate-800">Transaction History</h2>
                         <button
@@ -552,7 +640,7 @@
                             <tr
                                 class="text-slate-400 text-[12px] uppercase tracking-widest border-b border-slate-100 bg-slate-50/50">
                                 <th class="py-4 pl-6">SL No</th>
-                                <th class="py-4">Customer</th>
+                                <th class="py-4 hidden md:table-cell">Customer</th>
                                 <th class="py-4 hidden md:table-cell">Date</th>
                                 <th class="py-4 hidden md:table-cell">Chair</th>
                                 <th class="py-4">Service</th>
@@ -564,7 +652,7 @@
                         <tbody class="text-[12px] font-medium text-slate-600">
                             <tr class="border-b border-slate-50 hover:bg-blue-50/30 transition-colors group">
                                 <td class="py-5 pl-6 font-bold text-slate-800">01</td>
-                                <td class="py-5 font-bold text-slate-800">John Doe</td>
+                                <td class="py-5 font-bold text-slate-800 hidden md:table-cell">Nur Sapa</td>
                                 <td class="py-5 hidden md:table-cell">10 Mar, 2026</td>
                                 <td class="py-5 hidden md:table-cell">Chair 05</td>
                                 <td class="py-5">
@@ -588,25 +676,47 @@
 
             <!-- Details Section -->
             <section id="section-details" class="w-full hidden">
-                <div class="w-full h-full bg-white p-6 space-y-6">
+                <div class="w-full h-full bg-white p-6 space-y-4">
+
+                    <!-- Back Button -->
+                    <button onclick="showSection('section-dashboard')"
+                        class="flex items-center gap-2 p-2 text-slate-600 hover:text-slate-800">
+                        <i data-lucide="arrow-left" class="w-5 h-5 text-blue-700"></i>
+                        <span>Transaction History</span>
+                    </button>
 
                     <!-- Top Cards -->
                     <div class="flex flex-col md:flex-row justify-between w-full gap-6">
 
-                        <div class="bg-slate-50 p-5 rounded-xl shadow-xl px-12">
-                            <h2 class="font-bold text-slate-700 mb-3">Customer Info</h2>
-                            <p><b>Name:</b> Nur Sapa</p>
-                            <p><b>Phone:</b> 01700000000</p>
+                        <div
+                            class="bg-gradient-to-br from-blue-300 to-white border border-l-4 border-blue-500 p-5 rounded-xl shadow-sm flex items-start gap-4 w-full md:w-80">
+                            <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
+                                <i data-lucide="user" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-bold text-slate-800 text-sm mb-1">Customer Info</h2>
+                                <p class="text-slate-600 text-xs mb-0.5">Name: <span
+                                        class="font-semibold text-slate-900">Nur Sapa</span></p>
+                                <p class="text-slate-600 text-xs">Phone: <span
+                                        class="font-semibold text-slate-900">01700000000</span></p>
+                            </div>
                         </div>
 
-                        <div class="bg-slate-50 p-5 rounded-xl shadow-xl px-12">
-                            <h2 class="font-bold text-slate-700 mb-3">Transaction Info</h2>
-                            <p><b>Date:</b> 10 Mar 2026</p>
-                            <p><b>Chair:</b> Chair 05</p>
+                        <div
+                            class="bg-gradient-to-br from-purple-300 to-white border border-l-4 border-purple-500 p-5 rounded-xl shadow-sm flex items-start gap-4 w-full md:w-80">
+                            <div class="bg-purple-100 p-3 rounded-lg text-purple-600">
+                                <i data-lucide="receipt" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-bold text-slate-800 text-sm mb-1">Transaction Info</h2>
+                                <p class="text-slate-600 text-xs mb-0.5">Date: <span
+                                        class="font-semibold text-slate-900">10 Mar 2026</span></p>
+                                <p class="text-slate-600 text-xs">Chair: <span
+                                        class="font-semibold text-slate-900">Chair 05</span></p>
+                            </div>
                         </div>
 
                     </div>
-
 
                     <!-- Tables Section -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
@@ -719,96 +829,13 @@
                     </div>
 
 
-                    <!-- Back Button -->
-                    <button onclick="showSection('section-dashboard')"
-                        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                        Back
-                    </button>
+
 
                 </div>
 
             </section>
 
-            <!-- Payment Modal -->
-            <div id="paymentModal"
-                class="hidden fixed inset-0  z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center ">
-                <div
-                    class="bg-white p-4 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
-                    <div class="bg-slate-50   flex justify-between items-center">
-                        <h2 class="text-xl font-bold text-slate-800 tracking-tight">Payment Details</h2>
-                        <div class="bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold text-sm">
-                            Total: 99.75$.
-                        </div>
-                    </div>
 
-                    <div class="p-4 space-y-3">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <div class="col-span-1 md:col-span-3">
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Memo No.</label>
-                                <input type="text" placeholder="e.g., #INV-001"
-                                    class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Cash</label>
-                                <input type="number"
-                                    class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Card</label>
-                                <input type="number"
-                                    class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">MCash</label>
-                                <input type="number"
-                                    class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500 transition-all">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4 bg-slate-50  rounded-xl border border-slate-100">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Paid Amount
-                                    *</label>
-                                <input type="number" readonly value="0"
-                                    class="w-full bg-slate-200 border-transparent rounded-lg p-2 text-lg font-bold text-blue-600">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Due Amount</label>
-                                <input type="number" readonly value="0"
-                                    class="w-full bg-slate-200 border-transparent rounded-lg p-2 text-lg font-bold text-red-600">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Total Pay</label>
-                                <input type="number" class="w-full border-slate-300 border rounded-xl p-2">
-                            </div>
-                            <div>
-                                <label
-                                    class="block text-xs font-bold text-slate-500 uppercase mb-1">Change/Return</label>
-                                <input type="number" class="w-full border-slate-300 border rounded-xl p-2">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Remarks</label>
-                            <textarea
-                                class="w-full border-slate-300 border rounded-xl p-2 focus:ring-2 focus:ring-blue-500"
-                                rows="2"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="p-2 bg-slate-50 border-t flex justify-end gap-3">
-                        <button onclick="toggleModal()"
-                            class="px-6 py-3 text-slate-600 font-semibold hover:text-slate-800 transition">Cancel</button>
-                        <button
-                            class="px-8 py-3 bg-green-600 text-white rounded-xl font-bold shadow-lg shadow-green-200 hover:bg-green-700 transition-transform active:scale-95">Save
-                            Payment</button>
-                    </div>
-                </div>
-            </div>
         </main>
 
 
