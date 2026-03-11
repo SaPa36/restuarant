@@ -1,0 +1,26 @@
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* Good box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.view-section.hidden {
+    display: none;
+}
