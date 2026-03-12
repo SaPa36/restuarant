@@ -63,6 +63,28 @@
             modal.classList.toggle('hidden');
         }
 
+        function showOrder() {
+            // Find the div with the ID 'orderList'
+            const myDiv = document.getElementById('orderList');
+
+            // Remove 'hidden' so it shows up
+            myDiv.classList.remove('hidden');
+            myDiv.classList.add('flex');
+        }
+
+        function hideOrder() {
+            const myDiv = document.getElementById('orderList');
+
+            // Add 'hidden' back to hide it
+            myDiv.classList.add('hidden');
+            myDiv.classList.remove('flex');
+        }
+
+        function toggleOrder() {
+            document.getElementById('orderList').classList.toggle('hidden');
+            document.getElementById('orderList').classList.toggle('flex');
+        }
+
     </script>
 
 
@@ -71,7 +93,7 @@
 
 </head>
 
-<body class="bg-[#1e2632] font-sans h-screen overflow-hidden text-slate-800">
+<body class="bg-[#1e2632] font-sans h-screen md:overflow-hidden text-slate-800">
 
     <div class="flex flex-col md:flex-row h-full w-full">
 
@@ -99,7 +121,8 @@
             </nav>
 
             <div class="mt-auto flex flex-col gap-4">
-                <button class="btn btn-ghost btn-circle hover:bg-slate-700 hover:text-white border-none">
+                <button onclick="showSection('section-profile')"
+                    class="btn btn-ghost btn-circle hover:bg-slate-700 hover:text-white border-none">
                     <i data-lucide="settings" class="w-5 h-5"></i>
                 </button>
                 <button class="btn btn-ghost btn-circle text-red-400 hover:bg-red-900/30 border-none">
@@ -129,25 +152,43 @@
                         <li><a><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Orders</a></li>
                     </button>
 
+                    <button onclick="showSection('section-profile')"
+                        class="btn btn-ghost btn-circle hover:bg-slate-700 hover:text-white border-none">
+                        <i data-lucide="settings" class="w-5 h-5"></i> Profile
+                    </button>
+
                     <li><a class="text-red-500 hover:bg-red-50"><i data-lucide="power" class="w-4 h-4"></i> Logout</a>
                     </li>
+
+                    
                 </ul>
             </div>
 
-            <div class="avatar w-10 border-2 border-slate-600 rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User" />
+            <div class="flex flex-row gap-5">
+                <div>
+
+                    <button onclick="showOrder()"
+                        class="md:hidden flex items-center justify-center gap-2 bg-blue-600 text-white p-3 rounded-lg">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span>View Order</span>
+                    </button>
+                </div>
+                <div class="avatar w-10 border-2 border-slate-600 rounded-full">
+                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User" />
+                </div>
             </div>
 
         </header>
 
-        <main id="mainContent" class="w-full flex flex-col md:flex-row overflow-hidden bg-white md:mb-4 md:mt-4 md:mr-4  lg:flex-row  
+        <main id="mainContent" class="w-full  overflow-hidden bg-white md:mb-4 md:mt-4 md:mr-4   
          md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner ">
 
+
             <!-- Home Section -->
-            <section id="section-home" class=" flex flex-col lg:flex-row w-full h-full  overflow-hidden bg-white   lg:flex-row  
+            <section id="section-home" class=" flex flex-col lg:flex-row w-full h-full  md:overflow-hidden bg-white   lg:flex-row  
          md:rounded-l-[25px] md:rounded-r-[25px] shadow-inner view-section ">
                 <!-- Choose Category -->
-                <div class="flex-1 p-4 min-h-[600px]  overflow-y-auto scrollbar-hide">
+                <div class="flex-1 p-4   overflow-y-auto scrollbar-hide">
                     <!-- Menu Items -->
                     <div class="max-w-5xl mx-auto">
 
@@ -372,8 +413,10 @@
 
                 <!-- Order List -->
 
-                <div class="w-full overflow-y-auto pr-4 lg:w-[400px] bg-[#f8fafc] flex flex-col border-l border-slate-200">
+                <div id="orderList" class="hidden md:block shadow-4xl  ml-2 mr-2 overflow-hidden h-full pr-4 lg:w-[400px] bg-[#f8fafc] flex flex-col
+                 border-l border-slate-200">
                     <div class="pt-4 pb-4 pl-4 flex flex-col h-full">
+                        <button onclick="hideOrder()" class="md:hidden p-4 text-red-500">Close ✕</button>
 
                         <!-- Customer Information -->
                         <div class="p-2 bg-slate-50 rounded-xl border border-slate-200 mb-4">
@@ -392,7 +435,7 @@
                         </div>
 
                         <!-- Order Items -->
-                        <div class="flex-1 min-h-[200px] overflow-y-auto scrollbar-hide space-y-3 mb-6 pr-2">
+                        <div class="h-[220px] shrink-0 overflow-y-auto scrollbar-hide space-y-3 mb-6 pr-2">
 
                             <!-- Card 1 -->
                             <div
@@ -471,7 +514,7 @@
                                 </button>
                             </div>
 
-                                <!-- Card 4  -->
+                            <!-- Card 4  -->
                             <div
                                 class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
                                 <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
@@ -498,6 +541,56 @@
                             </div>
 
                             <!-- Card 5 -->
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                    class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 45.00</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <div
+                                class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
+                                <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
+                                    class="w-12 h-12 rounded-lg object-cover" />
+
+                                <div class="flex-1">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase">Gold Facial</h4>
+                                    <p class="text-sm font-black text-blue-600">$ 45.00</p>
+                                </div>
+
+                                <div class="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg p-1">
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="text-xs font-bold text-slate-800 w-4 text-center">1</span>
+                                    <button class="text-slate-400 hover:text-blue-500 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <button class="text-red-500 hover:text-red-700 transition-colors p-1">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
                             <div
                                 class="bg-white border border-slate-100 p-3 rounded-2xl flex items-center gap-3 shadow-lg hover:border-blue-100 transition-colors">
                                 <img src="./images/gold-facial-cost-procedure-how-to-do.webp"
@@ -697,12 +790,14 @@
                     </div>
                 </div>
 
-
             </section>
+
+
+
 
             <!-- Dashboard Section -->
             <section id="section-dashboard"
-                class="w-full hidden   bg-[#f8fafc] flex flex-col border-l border-slate-200">
+                class="w-full hidden  overflow-y-auto h-full bg-[#f8fafc] flex flex-col border-l border-slate-200">
                 <div class="w-full lg:p-12 bg-white min-h-screen">
                     <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
                         <h2 class="text-xl font-black text-slate-800">Transaction History</h2>
@@ -738,7 +833,8 @@
                                 </td>
                                 <td class="py-5 text-right font-black text-slate-800">$506.00</td>
                                 <td class="py-5 text-right font-bold text-green-600">$506.00</td>
-                                <td class="py-5 pr-6 text-right hidden md:table-cell text-red-500 font-bold">$0.00</td>
+                                <td class="py-5 pr-6 text-right hidden md:table-cell text-red-500 font-bold">$0.00
+                                </td>
                                 <td class="  text-right">
                                     <button onclick="showSection('section-details')"
                                         class="btn btn-sm btn-ghost hover:bg-blue-500 hover:text-white">
@@ -752,7 +848,8 @@
             </section>
 
             <!-- Details Section -->
-            <section id="section-details" class="w-full hidden">
+            <section id="section-details"
+                class="w-full hidden mb-20 overflow-y-auto h-full bg-[#f8fafc] flex flex-col border-l border-slate-200">
                 <div class="w-full h-full bg-white p-6 space-y-4">
 
                     <!-- Back Button -->
@@ -796,7 +893,7 @@
                     </div>
 
                     <!-- Tables Section -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full mb-10">
 
 
                         <!-- Service Table (8 column width) -->
@@ -912,6 +1009,112 @@
 
             </section>
 
+            <!-- Profile Section -->
+            <section id="section-profile" class="hidden">
+                <div
+                    class="w-full max-w-4xl mt-5 mx-auto p-6 lg:p-10 bg-gradient-to-br from-white to-slate-50 rounded-3xl shadow-2xl border border-slate-100">
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                        <!-- Profile Section -->
+                        <div class="space-y-8">
+
+                            <h2 class="text-3xl font-black text-slate-800 tracking-tight">Profile Update</h2>
+
+                            <!-- Avatar -->
+                            <div class="flex items-center gap-6">
+
+                                <div class="relative group">
+                                    <div
+                                        class="w-28 h-28 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-100 rounded-full flex items-center justify-center shadow-inner">
+
+                                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                            class="rounded-full object-cover w-full h-full text-blue-400">
+
+
+                                    </div>
+
+                                    <div
+                                        class="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-blue-700 transition">
+                                        📷
+                                    </div>
+                                </div>
+
+                                <button class="text-blue-600 font-semibold text-sm hover:text-blue-700 transition">
+                                    Change Photo
+                                </button>
+
+                            </div>
+
+                            <!-- Inputs -->
+                            <div class="space-y-5">
+
+                                <div>
+                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">
+                                        Full Name
+                                    </label>
+
+                                    <input type="text" placeholder="Nur Sapa"
+                                        class="w-full bg-white border border-slate-300 p-2 rounded-xl text-slate-700 shadow-sm focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none transition-all">
+                                </div>
+
+                                <div>
+                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">
+                                        Phone
+                                    </label>
+
+                                    <input type="text" placeholder="+1 (555) 123-667"
+                                        class="w-full bg-white border border-slate-300 p-2 rounded-xl text-slate-700 shadow-sm focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none transition-all">
+                                </div>
+
+                                <button
+                                    class="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold py-3 rounded-xl hover:scale-[1.01] hover:shadow-xl transition-all duration-200">
+                                    Update Profile
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Password Section -->
+                        <div class="lg:border-l border-slate-200 lg:pl-12 space-y-8">
+
+                            <h2 class="text-3xl font-black text-slate-800 tracking-tight">Change Password</h2>
+
+                            <div class="space-y-5">
+
+                                <div>
+                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">
+                                        Current Password
+                                    </label>
+
+                                    <input type="password"
+                                        class="w-full bg-white border border-slate-300 p-2 rounded-xl text-slate-700 shadow-sm focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none transition-all">
+                                </div>
+
+                                <div>
+                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">
+                                        New Password
+                                    </label>
+
+                                    <input type="password"
+                                        class="w-full bg-white border border-slate-300 p-2 rounded-xl text-slate-700 shadow-sm focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none transition-all">
+                                </div>
+
+                                <button
+                                    class="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold py-3 rounded-xl hover:scale-[1.01] hover:shadow-xl transition-all duration-200">
+                                    Update Password
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
 
         </main>
 
